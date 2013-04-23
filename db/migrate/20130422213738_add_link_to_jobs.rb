@@ -1,5 +1,5 @@
 class AddLinkToJobs < ActiveRecord::Migration
   def change
-    add_column :Jobs, :link, :string
+    add_column :jobs, :link, :string
   end
 end
