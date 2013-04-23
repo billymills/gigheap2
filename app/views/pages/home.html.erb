@@ -1,0 +1,54 @@
+<!-- outer container for main page -->
+<div class="container">
+	<div class="row" id="welcome_div">
+		<div class="welcome_inner span7">
+			<% if !signed_in? %>
+	  			<h2>Welcome to gigheap!</h2>
+				<p>Gigheap is a career resource for the Asheville technology community.  Employers <%= link_to "sign up", signup_path %> now and start listing jobs.  Followers of the site will recieve the listings immmediately. Job-seekers, follow us to get the latest updates!</p>		
+				<!-- <%= link_to "Sign up", signup_path, class: "btn btn-small btn-warning" %> -->
+		
+				<!-- twitter link follows -->
+  				<a href="https://twitter.com/heaptest" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @heaptest</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			<% else %>
+			<div id="welcome_back">
+				<p>Welcome Back!<p>
+				<p><%= link_to "Post a job", postjob_path %> to let Gigheap followers know about the position.</p>
+				<!-- <%= link_to "Post Job", postjob_path, class: "btn btn-small btn-primary" %> -->
+			</div>
+			<% end %>
+		</div>	
+		
+		<div class="span2 offset2" id="ghlogo">
+			<div>
+			<%= link_to image_tag("logo.png"), root_path %>
+			</div>
+		</div>
+			
+	</div>
+
+  	<div id="info_div" class="container">
+		<div class="row-fluid">
+			<div class="content_div span6">
+				<p class="instructions">Recent Job Tweets:</p>
+  				<% @tweets.each do |t| %>
+					<p class="sub_par"><i class="icon-chevron-right"></i><%= auto_link(t.text) %></p>
+  				<% end %>
+			</div>
+					
+			<div class="content_div span6">
+				<!-- <p>recent jobs</p> -->
+				<p class="instructions">Recent Job Listings:</p>
+				<% @jobs.each do |j| %>
+					<p class="sub_par"><i class="icon-chevron-right"></i><%= link_to j.title, j %> <%= j.company %><%= j.location%></p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+  <!-- <%= @twitter_feed %> -->  
+  <!-- remove rails image
+  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+  -->
+</div>
+
