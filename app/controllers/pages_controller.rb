@@ -34,10 +34,10 @@ class PagesController < ApplicationController
 	# end
 	
 	# fetch job info for front page here
-	#@jobs = Job.all
+	@jobs = Job.all
 	
 	# return the first 8 records in jobs table
-	@jobs = Job.find(:all, :limit => 8)
+	#@jobs = Job.find(:all, :limit => 8)
 
   end
   	
